@@ -1,0 +1,47 @@
+/* src/pages/EditProfile.css */
+
+/* Profile Picture Container */
+.profile-picture-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .profile-picture-container img {
+    border: 2px solid #dbdbdb;
+  }
+  
+  .camera-icon {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    padding: 8px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .camera-icon:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Form Styling */
+  .form-control {
+    border-radius: 8px;
+    border: 1px solid #dbdbdb;
+  }
+  
+  .form-control:focus {
+    border-color: #0095f6;
+    box-shadow: none;
+  }
+  
+  /* Button Styling */
+  .btn-primary {
+    background-color: #0095f6;
+    border: none;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0077e6;
+  }

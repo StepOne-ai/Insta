@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Login - Instagram Clone{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-4">
+        <div class="card mt-5">
+            <div class="card-body">
+                <h2 class="card-title text-center mb-4">Instagram Clone</h2>
+
+                <!-- Login Form -->
+                <form method="post" action="{% url 'login' %}">
+                    {% csrf_token %}
+
+                    <!-- Username Field -->
+                    <div class="mb-3">
+                        <input type="text" name="username" class="form-control" placeholder="Username" required>
+                    </div>
+
+                    <!-- Password Field -->
+                    <div class="mb-3">
+                        <input type="password" name="password" class="form-control" placeholder="Password" required>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-primary w-100">Log In</button>
+                </form>
+
+                <!-- Forgot Password Link -->
+                <div class="text-center mt-3">
+                    <a href="{% url 'password_reset' %}">Forgot password?</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sign Up Section -->
+        <div class="card mt-3">
+            <div class="card-body text-center">
+                <p class="mb-0">Don't have an account? <a href="{% url 'signup' %}">Sign up</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

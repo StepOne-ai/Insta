@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home - Instagram{% endblock %}
+
+{% block content %}
+<div class="post">
+    <h2>Welcome to Instagram Clone</h2>
+    {% if user.is_authenticated %}
+        <p>Hello, {{ user.username }}!</p>
+        <a href="{% url 'create_post' %}" class="btn btn-primary">Create a Post</a>
+    {% else %}
+        <p>Please <a href="{% url 'login' %}">login</a> to create memories(posts).</p>
+    {% endif %}
+</div>
+
+
+<!-- Display posts here
+{% for post in posts %}
+    <div class="post">
+        <h2>{{ post.title }}</h2>
+        <img src="{{ post.image.url }}" alt="{{ post.title }}">
+        <p>{{ post.description }}</p>
+        <p>Posted by: {{ post.user.username }}</p>
+    </div>
+{% endfor %} -->
+
+<style>
+    img {
+        width: 200px;
+        height: 150px;
+    }
+</style>
+
+<div class="post">
+    <h2>Some post 1</h2>
+    <img src="https://avatars.mds.yandex.net/i?id=ded9f2c74961457fea640e151f2e117fa4caa33e-8210460-images-thumbs&n=13" alt="Post 1">
+    <p>This is the description for post 1.</p>
+    <p>Posted by: User1</p>
+</div>
+
+<div class="post">
+    <h2>Some post 1</h2>
+    <img src="https://avatars.mds.yandex.net/i?id=ded9f2c74961457fea640e151f2e117fa4caa33e-8210460-images-thumbs&n=13" alt="Post 1">
+    <p>This is the description for post 1.</p>
+    <p>Posted by: User1</p>
+</div>
+
+<div class="post">
+    <h2>Some post 1</h2>
+    <img src="https://avatars.mds.yandex.net/i?id=ded9f2c74961457fea640e151f2e117fa4caa33e-8210460-images-thumbs&n=13" alt="Post 1">
+    <p>This is the description for post 1.</p>
+    <p>Posted by: User1</p>
+</div>
+
+<div class="post">
+    <h2>Some post 1</h2>
+    <img src="https://avatars.mds.yandex.net/i?id=ded9f2c74961457fea640e151f2e117fa4caa33e-8210460-images-thumbs&n=13" alt="Post 1">
+    <p>This is the description for post 1.</p>
+    <p>Posted by: User1</p>
+</div>
+
+<div class="post">
+    <h2>Some post 1</h2>
+    <img src="https://avatars.mds.yandex.net/i?id=ded9f2c74961457fea640e151f2e117fa4caa33e-8210460-images-thumbs&n=13" alt="Post 1">
+    <p>This is the description for post 1.</p>
+    <p>Posted by: User1</p>
+</div>
+
+{% endblock %}

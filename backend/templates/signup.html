@@ -1,0 +1,32 @@
+<!-- templates/signup.html -->
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Sign Up - Instagram Clone{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-4">
+        <div class="card mt-5">
+            <div class="card-body">
+                <h2 class="card-title text-center mb-4">Instagram Clone</h2>
+
+                <!-- Signup Form -->
+                <form method="post" action="{% url 'signup' %}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Login Section -->
+        <div class="card mt-3">
+            <div class="card-body text-center">
+                <p class="mb-0">Have an account? <a href="{% url 'login' %}">Log in</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,33 @@
+/* src/pages/Account.css */
+
+/* Profile Picture Styling */
+.profile-picture {
+    border: 2px solid #dbdbdb;
+  }
+  
+  /* Post Grid Styling */
+  .post-card {
+    border: 1px solid #dbdbdb;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .post-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .post-card .card-body {
+    padding: 10px;
+  }
+  
+  /* Button Styling */
+  .btn-outline-secondary {
+    border-color: #dbdbdb;
+    color: #262626;
+  }
+  
+  .btn-outline-secondary:hover {
+    background-color: #f1f1f1;
+  }

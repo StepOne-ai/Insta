@@ -1,0 +1,37 @@
+/* src/pages/CreateMemory.css */
+
+/* Image Upload Placeholder */
+.image-upload-placeholder {
+    border: 2px dashed #dbdbdb;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #fafafa;
+  }
+  
+  .image-upload-placeholder:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Card Styling */
+  .card {
+    border: 1px solid #dbdbdb;
+    border-radius: 8px;
+    background-color: #ffffff;
+  }
+  
+  /* Button Styling */
+  .btn-primary {
+    background-color: #0095f6;
+    border: none;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0077e6;
+  }
+  
+  .btn-primary:disabled {
+    background-color: #b2dffc;
+    cursor: not-allowed;
+  }

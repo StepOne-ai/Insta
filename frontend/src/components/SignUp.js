@@ -14,7 +14,7 @@ const SignUp = () => {
   };
 
   return (
-    <Container className="d-flex justify-content-center align-items-center vh-100">
+    <Container className="justify-content-center align-items-center pb-5" style={{ height: '100vh', paddingTop: '100px' }}>
       <Card style={{ width: '350px' }} className="p-4">
         <Card.Body>
           <h2 className="text-center mb-4">Instagram Clone</h2>

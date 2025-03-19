@@ -3,7 +3,7 @@
 import React from 'react';
 import { Container, Row, Col, Image, Card, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faEdit, faHeart, faComment } from '@fortawesome/free-solid-svg-icons';
 import './Account.css'; // Optional: Add custom CSS for styling
 
 const Account = () => {
@@ -17,16 +17,22 @@ const Account = () => {
         id: 1,
         image: 'https://avatars.mds.yandex.net/i?id=1602b3f80c3bba90872f8496f05322e9e00e8e64-5334779-images-thumbs&n=13',
         caption: 'Beautiful sunset!',
+        likes: 120,
+        comments: 15,
       },
       {
         id: 2,
         image: 'https://avatars.mds.yandex.net/i?id=1602b3f80c3bba90872f8496f05322e9e00e8e64-5334779-images-thumbs&n=13',
         caption: 'Exploring the mountains 🏔️',
+        likes: 95,
+        comments: 10,
       },
       {
         id: 3,
         image: 'https://avatars.mds.yandex.net/i?id=1602b3f80c3bba90872f8496f05322e9e00e8e64-5334779-images-thumbs&n=13',
         caption: 'Coffee and code ☕💻',
+        likes: 150,
+        comments: 20,
       },
       // Add more posts as needed
     ],
@@ -61,13 +67,27 @@ const Account = () => {
           </Row>
 
           {/* User's Posts Grid */}
-          <Row className="g-3">
+          <Row className="g-4">
             {user.posts.map((post) => (
-              <Col key={post.id} xs={6} md={4}>
+              <Col key={post.id} xs={12} md={6} lg={10}>
                 <Card className="post-card">
                   <Card.Img variant="top" src={post.image} />
-                  <Card.Body className="p-2">
-                    <Card.Text className="text-muted">{post.caption}</Card.Text>
+                  <Card.Body className="p-3">
+                    <Card.Text className="mb-2">{post.caption}</Card.Text>
+                    <div className="d-flex justify-content-between align-items-center">
+                      <a href="/likes_list" style={{ textDecoration: 'none', color: 'inherit' }}>
+                        <div>
+                          <FontAwesomeIcon icon={faHeart} className="me-2" />
+                          <span>{post.likes}</span>
+                        </div>
+                      </a>
+                      <div>
+                        <a href="/comment_section" style={{ textDecoration: 'none', color: 'inherit' }}>
+                          <FontAwesomeIcon icon={faComment} className="me-2" />
+                          <span>{post.comments}</span>
+                        </a>
+                      </div>
+                    </div>
                   </Card.Body>
                 </Card>
               </Col>

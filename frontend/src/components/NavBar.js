@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import { Navbar, Nav, Container, Form, FormControl, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faPlus, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faHome, faPlus, faUser } from '@fortawesome/free-solid-svg-icons';
 import { faInstagram } from '@fortawesome/free-brands-svg-icons';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './NavBar.module.css';
@@ -39,6 +39,11 @@ const NavBar = () => {
           {/* Add Memory Button */}
           <Nav.Link as={Link} to="/create_memory">
             <FontAwesomeIcon icon={faPlus} size="lg" />
+          </Nav.Link>
+
+          {/* Notifications centre */}
+          <Nav.Link as={Link} to="/notifications">
+            <FontAwesomeIcon icon={faHeart} size="lg" />
           </Nav.Link>
 
           {/* Profile Button */}

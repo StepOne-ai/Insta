@@ -9,8 +9,7 @@ const SignUp = () => {
 
   const handleSignUp = (e) => {
     e.preventDefault();
-    // Add your signup logic here
-    navigate('/'); // Redirect to home after signup
+    navigate('/');
   };
 
   return (

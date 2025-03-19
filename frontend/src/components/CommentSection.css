@@ -1,0 +1,25 @@
+/* CommentSection.css */
+
+.comment-section {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+  }
+  
+  .comment-section .list-group-item {
+    border: none;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .comment-section .list-group-item:last-child {
+    border-bottom: none;
+  }
+  
+  .comment-section .btn-link {
+    text-decoration: none;
+    color: #ff4757;
+  }
+  
+  .comment-section .btn-link:hover {
+    opacity: 0.8;
+  }

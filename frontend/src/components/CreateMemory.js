@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Container, Card, Form, Button, Image, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faImage, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
-import './CreateMemory.css'; // Optional: Add custom CSS for styling
+import './CreateMemory.css';
 
 const CreateMemory = () => {
   const [imagePreview, setImagePreview] = useState(null);

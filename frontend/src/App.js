@@ -8,6 +8,9 @@ import SignUp from './components/SignUp';
 import Layout from './components/Layout';
 import Error from './components/Error';
 import EditProfile from './components/EditProfile';
+import NotificationFeed from './components/Events';
+import CommentSection from './components/CommentSection';
+import LikesList from './components/LikesList';
 
 function App() {
   return (
@@ -21,6 +24,9 @@ function App() {
             <Route path="/create_memory" element={<CreateMemory />} />
             <Route path="/account" element={<Account />} />
             <Route path="/settings" element={<EditProfile />} />
+            <Route path="/notifications" element={<NotificationFeed />} />
+            <Route path="/comment_section" element={<CommentSection />} />
+            <Route path="/likes_list" element={<LikesList />} />
             {/* Catch-all route for invalid URLs */}
             <Route path="*" element={<Error />} />
         </Routes>

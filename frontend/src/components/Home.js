@@ -14,15 +14,12 @@ const Home = () => {
     comments: Math.floor(Math.random() * 100),
   }));
 
-  // Pagination state
   const [currentPage, setCurrentPage] = useState(0);
-  const postsPerPage = 10; // Number of posts per page
+  const postsPerPage = 10;
 
-  // Calculate the current posts to display
   const offset = currentPage * postsPerPage;
   const currentPosts = allPosts.slice(offset, offset + postsPerPage);
 
-  // Handle page change
   const handlePageClick = ({ selected }) => {
     setCurrentPage(selected);
     window.scrollTo({ top: 0, behavior: 'smooth' });

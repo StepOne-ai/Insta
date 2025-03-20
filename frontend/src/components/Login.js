@@ -9,8 +9,7 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // Add your login logic here
-    navigate('/'); // Redirect to home after login
+    navigate('/');
   };
 
   return (
@@ -49,7 +48,7 @@ const Login = () => {
 
           {/* Login with Facebook */}
           <Button variant="outline-primary" className="w-100 mb-3">
-            Log in with Facebook
+            Log in with VK ID
           </Button>
 
           {/* Forgot Password Link */}

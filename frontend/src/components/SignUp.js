@@ -1,15 +1,72 @@
-// src/components/SignUp.js
-
-import React from 'react';
-import { Container, Card, Form, Button, Row, Col } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Container, Card, Form, Button, Alert } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
   const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [fullName, setFullName] = useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [emailError, setEmailError] = useState('');
 
   const handleSignUp = (e) => {
     e.preventDefault();
-    navigate('/');
+    if (!passwordError && !emailError) {
+      navigate('/');
+    }
+  };
+
+  const validatePassword = (value) => {
+    const minLength = 8;
+    const hasUpperCase = /[A-Z]/.test(value);
+    const hasNumber = /[0-9]/.test(value);
+    const hasSpecialChar = /[!@#$%^&*]/.test(value);
+
+    if (value.length < minLength) {
+      setPasswordError('Password must be at least 8 characters long.');
+    } else if (!hasUpperCase) {
+      setPasswordError('Password must contain at least one uppercase letter.');
+    } else if (!hasNumber) {
+      setPasswordError('Password must contain at least one number.');
+    } else if (!hasSpecialChar) {
+      setPasswordError('Password must contain at least one special character.');
+    } else {
+      setPasswordError('');
+    }
+  };
+
+  const validateEmail = (value) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(value)) {
+      setEmailError('Please enter a valid email address.');
+    } else {
+      setEmailError('');
+    }
+  };
+
+  const handlePasswordChange = (e) => {
+    const value = e.target.value;
+    setPassword(value);
+    validatePassword(value);
+  };
+
+  const handleEmailChange = (e) => {
+    const value = e.target.value;
+    setEmail(value);
+    validateEmail(value);
+  };
+
+  const isFormValid = () => {
+    return (
+      email &&
+      fullName &&
+      username &&
+      password &&
+      !passwordError &&
+      !emailError
+    );
   };
 
   return (
@@ -25,7 +82,10 @@ const SignUp = () => {
                 type="email"
                 placeholder="Email"
                 required
+                value={email}
+                onChange={handleEmailChange}
               />
+              {emailError && <Alert variant="danger" className="mt-2">{emailError}</Alert>}
             </Form.Group>
 
             <Form.Group className="mb-3">
@@ -33,6 +93,8 @@ const SignUp = () => {
                 type="text"
                 placeholder="Full Name"
                 required
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
               />
             </Form.Group>
 
@@ -41,6 +103,8 @@ const SignUp = () => {
                 type="text"
                 placeholder="Username"
                 required
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
               />
             </Form.Group>
 
@@ -49,10 +113,18 @@ const SignUp = () => {
                 type="password"
                 placeholder="Password"
                 required
+                value={password}
+                onChange={handlePasswordChange}
               />
+              {passwordError && <Alert variant="danger" className="mt-2">{passwordError}</Alert>}
             </Form.Group>
 
-            <Button variant="primary" type="submit" className="w-100 mb-3">
+            <Button
+              variant="primary"
+              type="submit"
+              className="w-100 mb-3"
+              disabled={!isFormValid()}
+            >
               Sign Up
             </Button>
           </Form>

@@ -1,10 +1,7 @@
-// src/components/LikesList.js
-
 import React from "react";
 import { ListGroup, Image } from "react-bootstrap";
 
 const LikesList = ({ likes }) => {
-  // Example list of users who liked the post
   const usersWhoLiked = likes || [
     {
       id: 1,

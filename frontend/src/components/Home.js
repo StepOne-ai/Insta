@@ -53,7 +53,7 @@ const Home = () => {
                   <strong>{post.username}</strong> {post.caption}
                 </Card.Text>
                 <Card.Text className="text-muted">
-                  {post.likes} likes • {post.comments} comments
+                  <a href="/likes_list" style={{ textDecoration: 'none', color: 'inherit' }}>{post.likes} likes</a> • <a href="/comment_section" style={{ textDecoration: 'none', color: 'inherit' }} className="text-muted">{post.comments} comments</a>
                 </Card.Text>
               </Card.Body>
             </Card>

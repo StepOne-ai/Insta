@@ -11,6 +11,7 @@ import EditProfile from './components/EditProfile';
 import NotificationFeed from './components/Events';
 import CommentSection from './components/CommentSection';
 import LikesList from './components/LikesList';
+import Discover from './components/Discover';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             <Route path="/notifications" element={<NotificationFeed />} />
             <Route path="/comment_section" element={<CommentSection />} />
             <Route path="/likes_list" element={<LikesList />} />
+            <Route path="/discover" element={<Discover />} />
             {/* Catch-all route for invalid URLs */}
             <Route path="*" element={<Error />} />
         </Routes>

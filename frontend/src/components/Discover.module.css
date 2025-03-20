@@ -1,0 +1,44 @@
+ф/* Стиль для поисковой строки */
+.searchBar {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    display: block;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Стиль для контейнера поста */
+  .postContainer {
+    width: 100%;
+    height: 300px; /* Фиксированная высота для поста */
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .postContainer:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Стиль для изображения поста */
+  .postImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  .postContainer:hover .postImage {
+    transform: scale(1.1);
+  }
+  
+  /* Стиль для ссылки */
+  .postLink {
+    text-decoration: none;
+    color: inherit;
+  }

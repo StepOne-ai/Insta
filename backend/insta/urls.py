@@ -1,13 +1,15 @@
 from django.contrib import admin
-from django.urls import path, include
-from memories import views
+from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
+from memories.views import *
+from rest_framework.routers import DefaultRouter
 
-urlpatterns = [
-    path('', views.base, name='base'),
-    path('index/', views.index, name='index'),
-    path('signup/', views.signup, name='signup'),
-    path('login/', views.login, name='login'),
-    path('account/<str:username>', views.base, name='account_info'),
-    path('create_post/', views.create_post, name='create_post'),
-    path('password_reset/', views.password_reset, name='password_reset'),
-]
+router = DefaultRouter()
+router.register(r'posts', MemoryViewset, basename='memory')
+urlpatterns = router.urls
+
+urlpatterns.append(path('admin/', admin.site.urls))
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

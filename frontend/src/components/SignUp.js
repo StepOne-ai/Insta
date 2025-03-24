@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Container, Card, Form, Button, Alert } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -10,11 +11,35 @@ const SignUp = () => {
   const [password, setPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [emailError, setEmailError] = useState('');
+  const [error, setError] = useState(''); // For API error messages
 
-  const handleSignUp = (e) => {
+  const handleSignUp = async (e) => {
     e.preventDefault();
-    if (!passwordError && !emailError) {
-      navigate('/');
+
+    // Validate form fields
+    if (!isFormValid()) {
+      return;
+    }
+
+    try {
+      // Make API call to register the user
+      const response = await axios.post('http://127.0.0.1:8000/api/register/', {
+        username,
+        email,
+        password,
+      });
+
+      // If registration is successful, navigate to the login page
+      if (response.status === 201) {
+        navigate('/login');
+      }
+    } catch (err) {
+      // Handle errors from the API
+      if (err.response) {
+        setError(err.response.data.error || 'Registration failed. Please try again.');
+      } else {
+        setError('Network error. Please check your connection.');
+      }
     }
   };
 
@@ -74,6 +99,9 @@ const SignUp = () => {
       <Card style={{ width: '350px' }} className="p-4">
         <Card.Body>
           <h2 className="text-center mb-4">Instagram Clone</h2>
+
+          {/* Display API error messages */}
+          {error && <Alert variant="danger" className="mb-3">{error}</Alert>}
 
           {/* Sign Up Form */}
           <Form onSubmit={handleSignUp}>

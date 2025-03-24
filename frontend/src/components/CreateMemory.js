@@ -1,16 +1,17 @@
-// src/pages/CreateMemory.js
-
 import React, { useState } from 'react';
 import { Container, Card, Form, Button, Image, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faImage, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
+import AxiosInstance from './Axios';
+import { useNavigate } from 'react-router-dom';
 import './CreateMemory.css';
 
 const CreateMemory = () => {
   const [imagePreview, setImagePreview] = useState(null);
   const [caption, setCaption] = useState('');
 
-  // Handle image upload
+  const navigate = useNavigate();
+
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -22,16 +23,31 @@ const CreateMemory = () => {
     }
   };
 
-  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add your logic to handle the post creation here
-    console.log('Image:', imagePreview);
-    console.log('Caption:', caption);
-    alert('Post created successfully!');
-    // Reset form
+    
+    const image = document.getElementById('image-upload').files[0];
+
+    const formData = new FormData();
+    formData.append('caption', caption);
+    formData.append('image', image);
+
+    AxiosInstance.post('posts/', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    })
+    .then(response => {
+      alert('Post created successfully!');
+      setImagePreview(null);
+      setCaption('');
+    })
+    .catch(error => {
+      console.error('Error creating post:', error);
+    });
     setImagePreview(null);
     setCaption('');
+    navigate('/');
   };
 
   return (
@@ -68,6 +84,15 @@ const CreateMemory = () => {
                   className="d-none"
                 />
               </Form.Group>
+              {/* Title input */}
+              {/* <Form.Group className="mb-3">
+                <Form.Control
+                  type="text"
+                  placeholder="Title"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                />
+              </Form.Group> */}
 
               {/* Caption Input */}
               <Form.Group className="mb-3">
@@ -86,8 +111,8 @@ const CreateMemory = () => {
                 type="submit"
                 className="w-100"
                 onClick={handleSubmit}
-                disabled={!imagePreview}
-              >
+                disabled={!imagePreview || !caption}
+              > 
                 <FontAwesomeIcon icon={faPaperPlane} className="me-2" />
                 Share Post
               </Button>

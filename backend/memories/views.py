@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from rest_framework import viewsets, permissions
+from rest_framework import viewsets, permissions, generics
 from .serializers import *
 from rest_framework.response import Response
 from rest_framework.parsers import MultiPartParser, FormParser
@@ -53,3 +53,8 @@ class MemoryViewset(viewsets.ModelViewSet):
             return Response(status=204)
         except Post.DoesNotExist:
             return Response({"error": "Post not found"}, status=404)
+
+class RegisterView(generics.CreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = [permissions.AllowAny]
